@@ -1,5 +1,5 @@
 <template>
-  <v-app id="container">
+  <v-app id="main-container">
     <navigation/>
 
     <v-main>
@@ -29,7 +29,7 @@ export default {
   border: 1px solid yellow;
 } */
 
-#container{
+#main-container{
   background-image: url('./assets/anitrace_bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
