@@ -1,18 +1,18 @@
 <template>
-  <v-container class="d-flex justify-center">
-    <v-card dark id="container" flat class="my-10" max-width="500">
+  <v-container>
+    <v-card dark id="container" flat class="my-10 mx-auto" max-width="500">
       <p class="text-h4 text-center">ASK FOR SAUCE NO MORE!</p>
       <p class="subtitle-1 text-center">
         Upload the image of the anime scene to know the title of the show and other details.
       </p>
       <v-card-actions>
-        <v-btn block light>SIGN UP NOW</v-btn>
+        <v-btn block light to="/signin">SIGN UP NOW</v-btn>
       </v-card-actions>
 
       <v-card-title class="content-title">
         What is <span class="font-italic mx-1">Ani<span class="font-weight-bold">TRACE</span></span>?
       </v-card-title>
-      <v-card-text>
+      <v-card-text class="text-body-2">
         AniTRACE is an anime scene tracer web app built using trace.moe and Jikan APIs. It allows users to upload an image
         taken from an anime scene to get its title and other details. This project aims to help anime fans and watchers to
         get anime sauce from social media posts or other platforms that doesn’t indicate the title of the anime series or
@@ -22,9 +22,11 @@
       <v-card-title class="content-title">
         How to use <span class="font-italic mx-1">Ani<span class="font-weight-bold">TRACE</span></span>?
       </v-card-title>
-      <ul class="white--text">
-        <li v-for="instruction in instructions" :key="i" class="mb-2">{{ instruction }}</li>
-      </ul>
+      <v-card-text class="pl-0">
+        <ul>
+          <li v-for="instruction in instructions" :key="i" class="mb-2 text-body-2">{{ instruction }}</li>
+        </ul>
+      </v-card-text>
 
       <v-card-title class="content-title">
         Got some suggestions?
@@ -32,7 +34,7 @@
       <v-textarea placeholder="Type here..." outlined dark dense class="mx-2" v-model="userFeedback"></v-textarea>
       <v-card-actions class="py-0">
         <v-spacer></v-spacer>
-        <v-btn @click="alertFeedback()">SEND</v-btn>
+        <v-btn light>SEND</v-btn>
       </v-card-actions>
 
     </v-card>
@@ -57,11 +59,7 @@ export default {
     ]
 
   }),
-  methods: {
-    alertFeedback () {
-      alert(this.userFeedback)
-    }
-  }
+
 }
 </script>
 
@@ -74,8 +72,7 @@ export default {
   background: transparent;
 }
 
-.content-title{
+.content-title {
   margin-top: 1.5em;
 }
-
 </style>
