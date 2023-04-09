@@ -65,7 +65,8 @@ export default {
       "Results that have less than 90% similarity are most likely incorrect but not all the time.",
       "This works better on screen captured (screen shot) images from clips or anime episodes with the original aspect ratio.",
       "For better results, trim out black borders of your image before uploading.",
-      "If you didn't get the result that you're looking for, try uploading a different image until you finally get your desired result."
+      "If you didn't get the result that you're looking for, try uploading a different image until you finally get your desired result.",
+      "Be aware that AniTRACE may produce NSFW (adult contents) results."
       // "AniTRACE may show NSFW contents (adult contents), click on the checkbox to filter them out before uploading an image."
     ]
 
