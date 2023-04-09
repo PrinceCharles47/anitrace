@@ -6,7 +6,7 @@
             <v-btn plain class="white--text" v-if="isHomepage" to="/signin">Sign In</v-btn>
             <!-- <v-btn plain class="white--text">Dashboard</v-btn> -->
             <v-btn plain class="white--text" @click="signOut()" v-if="isLoggedIn">Log Out</v-btn>
-            <v-btn plain class="white--text" to="/">Back</v-btn>
+            <v-btn plain class="white--text" :to="backButtonRoute" v-if="goBack">Back</v-btn>
         </div>
     </v-app-bar>
 </template>
@@ -19,8 +19,10 @@ export default {
     name: 'Navigation',
 
     data: () => ({
-        isLoggedIn: false,
-        isHomepage: true
+        isLoggedIn: true,
+        isHomepage: false,
+        goBack: true,
+        backButtonRoute: '/'
     }),
     methods: {
 
@@ -31,23 +33,59 @@ export default {
         }
 
     },
+    created() {
+
+        if (this.$route.name === 'upload') {
+
+            this.isLoggedIn = true
+            this.isHomepage = false
+            this.goBack = false
+
+        } else if (this.$route.name === 'home') {
+
+            this.isLoggedIn = false
+            this.isHomepage = true
+            this.goBack = false
+
+        } else if (this.$route.name === 'signin') {
+            this.isLoggedIn = false
+            this.isHomepage = false
+            this.goBack = true
+            this.backButtonRoute = '/'
+        } else if (this.$route.name === 'anime details') {
+            this.isLoggedIn = true
+            this.isHomepage = false
+            this.goBack = true
+            this.backButtonRoute = '/upload'
+        }
+
+    },
     watch: {
 
-        '$route.name' : function(newVal, oldVal) {
+        '$route.name': function (newVal, oldVal) {
             console.log(newVal);
-            if(newVal === 'upload'){
+            if (newVal === 'upload') {
 
                 this.isLoggedIn = true
                 this.isHomepage = false
+                this.goBack = false
 
-            }else if(newVal === 'home'){
+            } else if (newVal === 'home') {
 
                 this.isLoggedIn = false
                 this.isHomepage = true
+                this.goBack = false
 
-            }else{
+            } else if (newVal === 'signin') {
                 this.isLoggedIn = false
                 this.isHomepage = false
+                this.goBack = true
+                this.backButtonRoute = '/'
+            } else if (newVal === 'anime details') {
+                this.isLoggedIn = true
+                this.isHomepage = false
+                this.goBack = true
+                this.backButtonRoute = '/upload'
             }
         }
 

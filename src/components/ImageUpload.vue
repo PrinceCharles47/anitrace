@@ -6,17 +6,18 @@
             prepend-icon="mdi-image" 
             placeholder="Input Image File"
             v-model="uploadedImage"
+            :loading="getLoadingState"
             >
             </v-file-input>
 
             <v-btn class="ml-4" light @click="fetchMatchScenes(uploadedImage)">UPLOAD</v-btn>
         </v-row>
-        <v-checkbox v-model="allowNSFW" label="Show NSFW results" class="float-right"></v-checkbox>
+        <!-- <v-checkbox v-model="allowNSFW" label="Show NSFW results" class="float-right"></v-checkbox> -->
     </v-card>
 </template>
   
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
     name: 'ImageUpload',
@@ -28,6 +29,11 @@ export default {
     methods: {
 
         ...mapActions(['fetchMatchScenes']),
+
+    },
+    computed: {
+
+        ...mapGetters(['getLoadingState'])
 
     }
 

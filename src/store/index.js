@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
 
+    loading: false,
     matchedScenes: null,
     animeDetails: {
       trailerURL: null,
@@ -22,6 +23,7 @@ export default new Vuex.Store({
   },
   getters: {
 
+    getLoadingState: state => state.loading,
     getMatchedScenes: state => state.matchedScenes,
     getAnimeDetails: state => state.animeDetails
 
@@ -56,12 +58,17 @@ export default new Vuex.Store({
       state.animeDetails.image = null
       state.animeDetails.genres = []
       state.animeDetails.studios = []
-    }
+    },
+
+    SET_LOADING_STATE: state => state.loading = !state.loading
 
   },
   actions: {
     //fetch scenes from api with anilist info based on uploaded image
     fetchMatchScenes: async ({ commit }, payload) => {
+
+      commit('SET_LOADING_STATE')
+
       const response = await fetch("https://api.trace.moe/search?anilistInfo", {
         method: "POST",
         body: payload,
@@ -69,17 +76,20 @@ export default new Vuex.Store({
 
       const matches = response.result
 
+      commit('SET_LOADING_STATE')
       commit('SET_MATCHED_SCENES', matches)
     },
 
     fetchSceneDetails: async ({commit}, payload) => {
 
+      commit('SET_LOADING_STATE')
       commit('RESET_ANIME_DETAILS')
 
       console.log('Fetch Scene Details');
       const response = await fetch('https://api.jikan.moe/v4/anime/' + payload + '/full')
       .then(data => data.json())
 
+      commit('SET_LOADING_STATE')
       commit('SET_ANIME_DETAILS', response)
 
     }

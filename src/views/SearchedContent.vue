@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-row class="mx-1">
-            <v-col cols="12" sm="8" md="6" class="mt-10 mx-auto">
+            <v-col cols="12" sm="8" md="6" class="mt-10 mx-auto mb-6">
                 <image-upload />
             </v-col>
         </v-row>

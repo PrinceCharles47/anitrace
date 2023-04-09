@@ -5,7 +5,7 @@
                 <iframe :src="animeDetails.trailerURL" frameborder="0"></iframe>
             </v-col>
         </v-row>
-        <v-row class="mx-auto">
+        <v-row class="mx-auto mb-6">
             <v-col cols="12" sm="10" md="8">
                 <v-card dark flat class="cards">
                     <v-card-title>{{ animeDetails.title.romaji }}</v-card-title>
@@ -53,7 +53,7 @@ export default {
     },
     computed: {
 
-        ...mapGetters(['getAnimeDetails'])
+        ...mapGetters(['getAnimeDetails', 'getLoadingState'])
 
     },
     created() {
