@@ -7,7 +7,7 @@
         </v-row>
         <v-row class="mx-auto mb-6">
             <v-col cols="12" sm="10" md="8" class="px-0">
-                <v-card dark flat class="cards">
+                <v-card dark flat class="cards px-0">
                     <v-card-title>{{ animeDetails.title.romaji }}</v-card-title>
                     <v-card-subtitle class="subtitle-1">{{ animeDetails.title.english }}</v-card-subtitle>
                     <v-card-subtitle>SYNOPSIS</v-card-subtitle>
@@ -64,7 +64,6 @@ export default {
 </script>
   
 <style scoped>
-*{border: 1px solid white;}
 iframe {
     width: 100%;
     aspect-ratio: 2/1;
