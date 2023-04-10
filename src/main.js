@@ -5,7 +5,7 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore'
-import firebaseConfig from './firebaseConfig'
+import firebaseConfig from '../firebaseConfig'
 
 // Use this to initialize the firebase App
 const firebaseApp = firebase.initializeApp(firebaseConfig);
